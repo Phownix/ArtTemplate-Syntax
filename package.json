@@ -2,10 +2,21 @@
   "name": "arttemplate-syntax",
   "displayName": "ArtTemplate Syntax",
   "description": "Syntax highlighting for Art Template",
-  "publisher": "wPhoenix",
+  "publisher": "Phownix",
   "version": "0.0.1",
+  "icon": "images/icon.png",
+  "author": {
+    "name": "Phownix",
+    "email": "paulogutierrez211@gmail.com",
+    "url": "https://github.com/Phownix/"
+  },
+  "homepage": "https://github.com/Phownix/ArtTemplate-Syntax",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Phownix/ArtTemplate-Syntax"
+  },
   "engines": {
-    "vscode": "^1.77.0"
+    "vscode": "^1.70.0"
   },
   "categories": [
     "Programming Languages",
@@ -15,8 +26,13 @@
     "languages": [
       {
         "id": "art",
-        "aliases": ["Art Template", "art"],
-        "extensions": [".art"],
+        "aliases": [
+          "Art Template",
+          "art"
+        ],
+        "extensions": [
+          ".art"
+        ],
         "configuration": "./language-configuration.json"
       }
     ],
