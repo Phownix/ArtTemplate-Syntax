@@ -1,0 +1,41 @@
+{
+  "name": "arttemplate-syntax",
+  "displayName": "ArtTemplate Syntax",
+  "description": "Syntax highlighting for Art Template",
+  "publisher": "wPhoenix",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.77.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "art",
+        "aliases": ["Art Template", "art"],
+        "extensions": [".art"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "art",
+        "scopeName": "text.html.art",
+        "path": "./syntaxes/art.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "art",
+        "path": "./snippets/art.json"
+      },
+      {
+        "language": "art",
+        "path": "./snippets/html.json"
+      }
+    ]
+  }
+}

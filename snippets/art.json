@@ -1,0 +1,41 @@
+{
+  "If Statement": {
+    "prefix": "if",
+    "body": ["{{ if (${1:value}) }}", "\t$0", "{{ /if }}"]
+  },
+
+  "If-Else Statement": {
+    "prefix": "if else",
+    "body": [ "{{ if (${1:value}) }}", "\t$2", "{{ else if (${3:value}) }}", "\t$0", "{{ /if }}"]
+  },
+
+  "Loop": {
+    "prefix": ["each", "loop", "for"],
+    "body": ["{{ each (${1:target}) }}", "\t{{\\$index}} {{\\$value}}", "{{ /each }}"]
+  },
+
+  "Variable": {
+    "prefix": ["set", "var", "let"],
+    "body": ["{{ set ${1:name} = ${0:value} }}"]
+  },
+
+  "Layout": {
+    "prefix": ["layout", "extend"],
+    "body": ["{{ extend \"./${1:path}/${0:file}.art\" }}"]
+  },
+
+  "Block": {
+    "prefix": "block",
+    "body": ["{{ block \"${1:name}\" }}", "\t$0", "{{ /block }}"]
+  },
+
+  "Include": {
+    "prefix": "include",
+    "body": ["{{ include \"./${0:file}.art\" }}"]
+  },
+
+  "Filters": {
+    "prefix": "filter",
+    "body": ["{{ date | timestamp | dateFormat \"yyyy-MM-dd hh:mm:ss\" }}"]
+  }
+}

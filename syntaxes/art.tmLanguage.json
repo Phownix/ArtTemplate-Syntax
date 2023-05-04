@@ -1,0 +1,67 @@
+{
+  "scopeName": "text.html.art",
+  "name": "Art Template",
+  "fileTypes": [".art"],
+  "patterns": [
+    { "include": "#keywords" },
+    { "include": "#strings" },
+    { "include": "#numeric" },
+    { "include": "#boolean" },
+    { "include": "#operators" },
+    { "include": "#types" },
+    { "include": "text.html.basic" }
+  ],
+  "repository": {
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.art",
+          "match": "\\b(or|and|not|if|else|each|set|return)\\b"
+        }
+      ]
+    },
+    "strings": {
+      "name": "string.quoted.double.art",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        {
+          "name": "constant.character.escape.art",
+          "match": "\\\\."
+        }
+      ]
+    },
+    "numeric": {
+      "patterns": [
+        {
+          "name": "constant.numeric.art",
+          "match": "\\b(0x[0-9a-fA-F]+|[0-9]+(\\.[0-9]+)?)\\b"
+        }
+      ]
+    },
+    "boolean": {
+      "patterns": [
+        {
+          "name": "constant.language.boolean.art",
+          "match": "\\b(true|false)\\b"
+        }
+      ]
+    },
+    "operators": {
+      "patterns": [
+        {
+          "name": "entity.name.tag.art",
+          "match": "\\b(println|print|input|int_input|absolute_number_of|is_number|Pi|is_string|is_array|is_function|exit_program|size|typeof|int|float|string|chars)\\b"
+        }
+      ]
+    },
+    "types": {
+      "patterns": [
+        {
+          "name": "entity.name.type.art",
+          "match": "\\b(int|float|string|null)\\b"
+        }
+      ]
+    }
+  }
+}
