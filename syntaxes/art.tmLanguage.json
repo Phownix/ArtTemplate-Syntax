@@ -1,67 +1,153 @@
 {
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
   "scopeName": "text.html.art",
   "name": "Art Template",
   "fileTypes": [".art"],
   "patterns": [
-    { "include": "#keywords" },
-    { "include": "#strings" },
-    { "include": "#numeric" },
-    { "include": "#boolean" },
-    { "include": "#operators" },
-    { "include": "#types" },
-    { "include": "text.html.basic" }
+    { "include": "#bracket" },
+    { "include": "#html-tag" },
+    { "include": "#html-comment" }
   ],
   "repository": {
-    "keywords": {
+    "bracket": {
+      "name": "markup.changed",
+      "begin": "{{",
+      "end": "}}",
       "patterns": [
+        { "include": "#numeric" },
+        { "include": "#string-double-quoted" },
+        { "include": "#string-single-quoted" },
+        { "include": "#boolean" },
         {
-          "name": "keyword.control.art",
-          "match": "\\b(or|and|not|if|else|each|set|return)\\b"
+          "name": "markup.heading",
+          "match": "{{|}}"
+        },
+        {
+          "name": "keyword.control",
+          "match": "\\b(each|if|else|set|block|extend|include)\\b"
+        },
+        {
+          "name": "keyword.control",
+          "match": "/(if|each|block)"
+        },
+        {
+          "name": "keyword.operator",
+          "match": "\\s(>|<|>=|<=|[=]{1,3})\\s"
+        },
+        {
+          "name": "support.class",
+          "match": "\\s(\\?|\\|\\||\\||\\+|:|@|&&)\\s"
+        },
+        {
+          "name": "variable.name",
+          "match": "\\$?[a-zA-Z0-9_\\.]+"
+        },
+        {
+          "name": "keyword.operator",
+          "match": "\\[|\\]"
         }
       ]
     },
-    "strings": {
-      "name": "string.quoted.double.art",
+    "string-double-quoted": {
+      "name": "string.quoted.double",
       "begin": "\"",
       "end": "\"",
+      "beginCaptures": {
+        "0": { "name": "punctuation.definition.string.begin" }
+      },
+      "endCaptures": {
+        "0": { "name": "punctuation.definition.string.end" }
+      },
       "patterns": [
         {
-          "name": "constant.character.escape.art",
-          "match": "\\\\."
+          "name": "constant.character.escape",
+          "match": "\\\\\""
         }
       ]
     },
-    "numeric": {
+    "string-single-quoted": {
+      "name": "string.quoted.single",
+      "begin": "'",
+      "end": "'",
+      "beginCaptures": {
+        "0": { "name": "punctuation.definition.string.begin" }
+      },
+      "endCaptures": {
+        "0": { "name": "punctuation.definition.string.end" }
+      },
       "patterns": [
         {
-          "name": "constant.numeric.art",
-          "match": "\\b(0x[0-9a-fA-F]+|[0-9]+(\\.[0-9]+)?)\\b"
+          "name": "constant.character.escape",
+          "match": "\\\\'"
         }
       ]
+    },
+    "variable": {
+      "name": "variable.other",
+      "match": "\\b([a-zA-Z0-9-_]+)\\b",
+      "patterns": []
     },
     "boolean": {
+      "match": "true|false",
+      "captures": {
+        "0": { "name": "constant.language" }
+      },
+      "patterns": []
+    },
+    "numeric": {
+      "name": "constant.numeric",
+      "match": "\\b(0x[0-9a-fA-F]+|[0-9]+(\\.[0-9]+)?)\\b",
+      "patterns": []
+    },
+    "html-comment": {
+      "name": "comment.block.html",
+      "begin": "<!--",
+      "end": "--\\s*>",
+      "captures": {
+        "0": { "name": "punctuation.definition.comment.html" }
+      },
       "patterns": [
+        { "include": "#attention" },
         {
-          "name": "constant.language.boolean.art",
-          "match": "\\b(true|false)\\b"
+          "match": "--",
+          "name": "invalid.illegal.bad-comments-or-CDATA.html"
         }
       ]
     },
-    "operators": {
+    "attention": {
+      "name": "storage.type.class.${1:/downcase}",
+      "match": "@?(TODO|FIXME|CHANGED|XXX|IDEA|HACK|NOTE|REVIEW|NB|BUG|QUESTION|TEMP)\\b",
+      "patterns": []
+    },
+    "html-tag": {
+      "name": "meta.tag.any",
+      "begin": "(<\\/?)(([a-zA-Z0-9!:-]+))\\b",
+      "beginCaptures": {
+        "1": { "name": "punctuation.definition.tag.html" },
+        "2": { "name": "entity.name.tag.html" }
+      },
+      "end": "(\\/?)(>)",
+      "endCaptures": {
+        "1": { "name": "punctuation.definition.tag.html" },
+        "2": { "name": "punctuation.definition.tag.html" }
+      },
       "patterns": [
-        {
-          "name": "entity.name.tag.art",
-          "match": "\\b(println|print|input|int_input|absolute_number_of|is_number|Pi|is_string|is_array|is_function|exit_program|size|typeof|int|float|string|chars)\\b"
-        }
+        { "include": "#string-double-quoted" },
+        { "include": "#string-single-quoted" },
+        { "include": "#html-attribute" },
+        { "include": "#boolean" },
+        { "include": "#numeric" }
       ]
     },
-    "types": {
-      "patterns": [
-        {
-          "name": "entity.name.type.art",
-          "match": "\\b(int|float|string|null)\\b"
-        }
-      ]
+    "html-attribute": {
+      "match": "\\s\\b(id)(=)|\\s\\b([a-zA-Z0-9:_.-]+)(=)?",
+      "captures": {
+        "1": { "name": "entity.other.attribute-name.id.html" },
+        "2": { "name": "punctuation.separator.key-value.html" },
+        "3": { "name": "entity.other.attribute-name" },
+        "4": { "name": "punctuation.separator.key-value.html" }
+      },
+      "patterns": []
     }
   }
 }
