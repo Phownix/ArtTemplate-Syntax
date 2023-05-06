@@ -16,8 +16,12 @@ you can see [CHANGELOG.md](CHANGELOG.md) file for more information
 
 ### 0.0.1
 
-Initial release
+- Initial release
 
+### 0.1.2
+
+- fix highlight in art-template code
+- fix html snippets
 ---
 
 **Enjoy!**

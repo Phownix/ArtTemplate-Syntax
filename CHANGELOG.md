@@ -9,3 +9,8 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ## [0.0.1] 2023-05-04
 
 - Initial release
+
+## [0.1.2] 2023-05-06
+
+- fix highlight in art-template code
+- fix html snippets
