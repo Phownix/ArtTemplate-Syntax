@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-  "scopeName": "text.html.art",
+  "scopeName": "source.art",
   "name": "Art Template",
   "fileTypes": [".art"],
   "patterns": [
@@ -17,6 +17,7 @@
         { "include": "#numeric" },
         { "include": "#string-double-quoted" },
         { "include": "#string-single-quoted" },
+        { "include": "text.html.basic" },
         { "include": "#boolean" },
         {
           "name": "markup.heading",

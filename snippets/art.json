@@ -1,11 +1,11 @@
 {
   "If Statement": {
-    "prefix": "if",
+    "prefix": ["if"],
     "body": ["{{ if (${1:value}) }}", "\t$0", "{{ /if }}"]
   },
 
   "If-Else Statement": {
-    "prefix": "if else",
+    "prefix": ["if else"],
     "body": [ "{{ if (${1:value}) }}", "\t$2", "{{ else if (${3:value}) }}", "\t$0", "{{ /if }}"]
   },
 

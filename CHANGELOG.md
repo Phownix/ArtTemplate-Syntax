@@ -14,3 +14,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 - fix highlight in art-template code
 - fix html snippets
+
+## [0.2.1] 2023-07-29
+
+- now there is highlight in js and css code

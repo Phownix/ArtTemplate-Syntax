@@ -23,34 +23,35 @@
     "Snippets"
   ],
   "contributes": {
+    "snippets": [
+      {
+        "language": "html",
+        "path": "./snippets/art.json"
+      }
+    ],
     "languages": [
       {
-        "id": "art",
+        "id": "html",
         "aliases": [
           "Art Template",
-          "art"
+          "art-template"
         ],
-        "extensions": [
-          ".art"
-        ],
-        "configuration": "./language-configuration.json"
+        "extensions": [ ".art" ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./icons/icon.svg",
+          "dark": "./icons/icon.svg"
+        }
       }
     ],
     "grammars": [
       {
-        "language": "art",
-        "scopeName": "text.html.art",
-        "path": "./syntaxes/art.tmLanguage.json"
-      }
-    ],
-    "snippets": [
-      {
-        "language": "art",
-        "path": "./snippets/art.json"
-      },
-      {
-        "language": "art",
-        "path": "./snippets/html.json"
+        "language": "html",
+        "scopeName": "source.art",
+        "path": "./syntaxes/art.tmLanguage.json",
+        "embeddedLanguages": {
+          "html" : "source.art"
+        }
       }
     ]
   }
